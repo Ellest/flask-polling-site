@@ -16,13 +16,18 @@ db.create_all(app=app)
 
 # route main page
 @app.route('/')
-
 def home():
 	return render_template('index.html')
 
+# cover page
 @app.route('/cover')
 def cover():
 	return render_template('cover.html')
+
+# signup page
+@app.route('/signup')
+def signup():
+	return render_template('signup.html')
 
 if __name__ == '__main__':
 	app.run()
