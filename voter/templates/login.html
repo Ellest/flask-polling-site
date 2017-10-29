@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../static/css/images/favicon.ico">
 
-    <title>Two Cents</title>
+    <title>Sign In</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../static/css/bootstrap.min.css" rel="stylesheet">
@@ -27,14 +27,14 @@
 
         <div class="cover-container">
 
-            <header class="masthead clearfix">
+          <header class="masthead clearfix">
             <div class="inner">
               <h3 class="masthead-brand">Two Cents</h3>
               <nav class="nav nav-masthead">
-                <a class="nav-link active" href="{{url_for('home')}}">Home</a>
+                <a class="nav-link" href="{{url_for('home')}}">Home</a>
                 <a class="nav-link" href="#">Contact</a>
                 {% if not session.get('user') %}
-                <a class="nav-link" href="{{url_for('login')}}">Login</a>
+                <a class="nav-link active" href="{{url_for('login')}}">Login</a>
                 <a class="nav-link" href="{{url_for('signup')}}">Sign up</a>
                 {% else %}
                 <a class="nav-link" href="{{url_for('logout')}}">Logout</a>
@@ -43,24 +43,23 @@
             </div>
           </header>
 
-          
-          <main role="main" class="inner cover">
-            {% if not session.get('user') %}
-            <h1 class="cover-heading">Welcome</h1>
-            {% else %}
-            <h1 class="cover-heading">Welcome {{session['user']}}</h1>
-            {% endif %}
-            <p class="lead">Sign in to view your favorites</p>
-            <p class="lead">
-              <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
-            </p>
-          </main>
+          <div class="container">
 
-          <footer class="mastfoot">
-            <div class="inner">
-              <p>Project by Elliot Yun</p>
-            </div>
-          </footer>
+            <form class="form-signin">
+              <h2 class="form-signin-heading">Please Log In</h2>
+              <label for="inputEmail" class="sr-only">Username</label>
+              <input type="email" id="inputUser" class="form-control" placeholder="Email address" required autofocus>
+              <label for="inputPassword" class="sr-only">Password</label>
+              <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" value="remember-me"> Remember me
+                </label>
+              </div>
+              <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            </form>
+
+          </div> <!-- /container -->
 
         </div>
 

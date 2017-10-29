@@ -18,6 +18,9 @@
     <link href="../static/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
+    <link href="../static/css/cover.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
     <link href="../static/css/signin.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
@@ -32,25 +35,57 @@
   </head>
 
   <body>
+    <div class="site-wrapper">
 
-    <div class="container">
+      <div class="site-wrapper-inner">
 
-      <form class="form-signin">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
+        <div class="cover-container">
+
+            <header class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Two Cents</h3>
+              <nav class="nav nav-masthead">
+                <a class="nav-link" href="{{url_for('home')}}">Home</a>
+                <a class="nav-link" href="#">Contact</a>
+                {% if not session.get('user') %}
+                <a class="nav-link" href="{{url_for('login')}}">Login</a>
+                <a class="nav-link active" href="{{url_for('signup')}}">Sign up</a>
+                {% else %}
+                <a class="nav-link" href="{{url_for('logout')}}">Logout</a>
+                {% endif %}
+              </nav>
+            </div>
+          </header>
+
+          <div class="container">
+
+            <form class="form-signin">
+              <h2 class="form-signin-heading">Here's a vanilla Signup Form...</h2>
+
+              <label for="inputEmail" class="sr-only">Username</label>
+              <input type="email" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
+
+              <label for="inputPassword" class="sr-only">Password</label>
+              <input type="email" id="inputPassword" class="form-control" placeholder="Password" required autofocus>
+
+              <label for="inputEmail" class="sr-only">Email</label>
+              <input type="password" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" value="remember-me"> Remember me
+                </label>
+              </div>
+              <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+            </form>
+
+          </div> <!-- /container -->
+
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      </form>
 
-    </div> <!-- /container -->
+      </div>
 
+    </div>
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
